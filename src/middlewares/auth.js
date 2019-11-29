@@ -8,7 +8,7 @@ module.exports = async (req, res, next) => {
     return res.status(401).json({ error: "Token not provided" });
   }
 
-  const [, token] = authHeader.split("");
+  const [, token] = authHeader.split(" ");
 
   try {
     const decoded = await promisify(jwt.verify)(token, authConfig.secret);
